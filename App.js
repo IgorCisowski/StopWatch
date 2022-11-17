@@ -54,7 +54,10 @@ function run() {
   let m = minutes < 10 ? `0${minutes}` : minutes;
   let s = seconds < 10 ? `0${seconds}` : seconds;
   // NIE WIEM CHYBA COŚ TU TRZEBA ZMIENIĆ
-  let mili = miliSeconds < 10 ? `0${miliSeconds}` : miliSeconds;
+  let mili = 0;
+  if (miliSeconds < 999) mili = `${miliSeconds / 10}`;
+  if (miliSeconds < 99) mili = `0${miliSeconds / 10}`;
+  // miliSeconds < 999 ? miliSeconds < 99 && `${miliSeconds / 10}` : miliSeconds;
   //Update time watch
   stopWatch.textContent = `${m} : ${s} : ${mili}`;
 }
